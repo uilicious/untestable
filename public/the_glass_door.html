@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Glass Door | UNtestable buttons</title>
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/site.css">
+
+    <!-- Scripts -->
+    <script src="./js/log.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+
+        <div id="info">
+            <div class="level-info">
+                <div class="level-info-number">Level 1</div>
+                <div class="level-info-name">The Glass Door</div>
+                <div class="level-info-description">
+                    <p>
+                        This example exhibits a "Card" component, which is made of a <code>&lt;button></code> element containing an image, and overlayed with a translucent <code>&lt;label></code> element binded to the <code>&lt;button></code> containing the button text.
+                    </p>
+                    <hr>
+                    <p>
+                        <b>Exercise`</b> <br>
+                        Write a test that fulfils the following requirements:
+                    </p>
+                    <ul>
+                        <li>
+                            Performs a click on <b>exactly</b> the <code>"button#visit-chicago-btn"</code>, not the <code>".card"</code> element that wraps it, and not the <code>"label"</code> that is over the button.
+                        </li>
+                        <li>
+                            No use of Javascript clicks.
+                        </li>
+                        <li>
+                            If the click is successful, you'll see <code>""button#visit-chicago-btn" clicked."</code> in the logs below.
+                        </li>
+                    </ul>
+                </div>
+                <div class="level-page-links">
+                    <a href="#"></a>
+                    <a href="./the_clone.html">Next Level</a>
+                </div>
+                <hr>
+            </div>
+            <div id="log">
+                <div class="log-header">
+                    <div class="log-title">Logs</div>
+                    <a href="#clearLogs" onclick="clearLogs()">Clear</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page">
+
+            <div id="page-content">
+                
+                <h1>Where would you like to go?</h1>
+
+                <!-- Here is the card-list component, statically rendered -->
+                <div class="card-list">
+
+                    <!-- Here is a card component -->
+                    <div class="card">
+                        <!-- This label component is overlayed above the button that is is binded to -->
+                        <label for="visit-chicago-btn" class="card-label">
+                            Visit Chicago
+                        </label>
+                        <button id="visit-chicago-btn" href="#" class="card-btn">
+                            <img src="./images/chicago.jpg" alt="Chicago">
+                        </button>
+                    </div>
+    
+                    <div class="card">
+                        <label for="visit-newyork-btn" class="card-label">
+                            Visit New York
+                        </label>
+                        <button id="visit-newyork-btn" href="#" class="card-btn">
+                            <img src="./images/new_york.jpg" alt="New York">
+                        </button>
+                    </div>
+    
+                    <div class="card">
+                        <label for="visit-losangeles-btn" class="card-label">
+                            Visit Los Angeles
+                        </label>
+                        <button id="visit-losangeles-btn" href="#" class="card-btn">
+                            <img src="./images/los_angeles.jpg" alt="LA">
+                        </button>
+                    </div>
+    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

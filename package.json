@@ -1,0 +1,33 @@
+{
+  "name": "untestable",
+  "version": "1.0.0",
+  "description": "A website that works perfectly for human beings but breaks browser automation scripts",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "PORT=8000 http-server ./public",
+    "start-chromedriver": "./drivers/chromedriver",
+    "ts-node": "ts-node"
+  },
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "uilicious"
+  ],
+  "author": "Tai Shi Ling",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/selenium-webdriver": "^4.1.13",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.8.1",
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uilicious/untestable"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

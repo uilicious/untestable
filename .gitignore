@@ -1,0 +1,11 @@
+# TODO list
+todo.md
+
+# node modules
+node_modules
+
+# IDE
+.vscode
+
+# Local Netlify folder
+.netlify

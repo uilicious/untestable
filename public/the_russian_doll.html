@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Russian Doll | UNtestable buttons</title>
+    
+    <!-- libraries -->
+    <script src="./vendor/jquery/jquery-3.6.4.min.js"></script>
+    <script src="./vendor/jquery-ui/jquery-ui-1.13.2.min.js"></script>
+    <link rel="stylesheet" href="./vendor/jquery-ui/base-theme.css">
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/site.css">
+    
+    <!-- Scripts -->
+    <script src="./js/log.js"></script>
+    <script src="./js/component/cardList.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+
+        <div id="info">
+            <div class="level-info">
+                <div class="level-info-number">Level 4</div>
+                <div class="level-info-name">The Russian Doll</div>
+                <div class="level-info-description">
+                    <p>
+                        This example exhibits a scrollable page, which has a "Country of Residence" dropdown field that uses "Jquery UI Select Menu", which displays options within a scrollable dropdown menu.
+                    </p>
+                    <hr>
+                    <p>
+                        <b>Exercise:</b><br>
+                        Write a test that fulfils the following requirements:
+                    </p>
+                    <ul>
+                        <li>
+                            Clicks to select the "Singapore" option in the "Country of Residence" dropdown field.
+                        </li>
+                        <li>
+                            No use of Javascript clicks.
+                        </li>
+                        <li>
+                            If the click is successful, you'll see <code>"Singapore" option selected.</code> in the logs below.
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="level-page-links">
+                    <a href="./the_dodgeball.html">Previous Level</a>
+                    <a href="#"></a>
+                </div>
+                <hr>
+            </div>
+            <div id="log">
+                <div class="log-header">
+                    <div class="log-title">Logs</div>
+                    <a href="#clearLogs" onclick="clearLogs()">Clear</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="page">
+
+            <nav id="top-nav">
+                <div class="nav-left">
+                    <span class="nav-brand-text">City Cat Tours</span>
+                </div>
+                <div class="nav-right">
+                    <button id="nav-login-btn" onclick="onclickme_clicked(event)">Login</button>
+                </div>
+                <div id="cat-paw">
+                    <img src="./images/cat-paw-black.png" alt="">
+                </div>
+            </nav>
+           
+            <div id="page-content">
+                <p>A one-of-a-kind tour to visit community cats in the city.</p>
+                <h1>Where would you like to go?</h1>
+                <div class="card-list"></div>
+
+                <div style="margin-top: 50vh;">
+                    <form action="">
+                        <h2>Sign up for a tour</h2>
+                        <fieldset>
+                            <label for="input-name">Name</label>
+                            <input id="input-name" type="text" name="name">
+                        </fieldset>
+                        <fieldset>
+                            <label for="input-mobile-number">Mobile number</label>
+                            <input id="input-mobile-number" type="text" name="date">
+                        </fieldset>
+                        <fieldset>
+                            <label for="input-tour-city">Tour</label>
+                            <select id="input-tour-city" name="tour-city">
+                                <option value="chicago">Chicago</option>
+                                <option value="la">Los Angeles</option>
+                                <option value="newyork">New York</option>
+                            </select>
+                        </fieldset>
+                        <fieldset>
+                            <label for="input-tour-date">Tour Date</label>
+                            <input id="input-tour-date" type="date" name="tour-date">
+                        </fieldset>
+                        <fieldset>
+                            <label for="input-country-of-residence">Country of Residence</label>
+                            <select id="input-country-of-residence" name="country-of-residence"></select>
+                        </fieldset>
+                        <fieldset>
+                            <input type="submit" value="Sign up">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+
+    let cardListElement = document.getElementsByClassName("card-list")[0]
+
+    // first time rendering
+    renderCardList(cardListElement) 
+
+    //
+    // Re-render template, every 500ms
+    // - a few older frameworks have this buggy behavior of rerendering components, 
+    //   which is not perceivable to the end user.
+    //
+    setInterval(function(){
+        renderCardList(cardListElement)
+    }, 500)
+
+    // prepare city tour select dropdown menu
+    $("#input-tour-city").selectmenu({})
+
+    // prepare country of residence select dropdown
+    fetch(new Request("./data/countries.json"))
+        .then((res)=>{
+            return res.json()
+        })
+        .then((data)=>{
+            let selectElement = document.getElementById("input-country-of-residence")
+            data.forEach((country)=>{
+                let optionElement = document.createElement("option")
+                optionElement.setAttribute("value", country.code)
+                optionElement.innerText = country.name;
+                selectElement.appendChild(optionElement)
+            })
+            $("#input-country-of-residence").selectmenu({
+                change: function( event, ui ) {
+                    log("\"" + ui.item.label + "\" option selected.")
+                }
+            })
+        })
+        .catch((e)=>{console.error("error fetching countries.json: ",e)})
+
+</script>
+
+</html>
