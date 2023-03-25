@@ -45,14 +45,8 @@ describe("The Clone", function(){
             
             /************************************************/
 
-            // This will produce "stale element reference" error
-            // await driver.findElement(BUTTON_TO_CLICK).click()
-		
-            // TODO: initialise The Finger (it's already imported)
-            let finger = new TheFinger(driver)
-
-            // TODO: click using The Finger
-            await finger.click(BUTTON_TO_CLICK)
+            // TODO: using webdriver click() to click on the button
+            await driver.findElement(BUTTON_TO_CLICK).click()
 
             /************************************************/
 
