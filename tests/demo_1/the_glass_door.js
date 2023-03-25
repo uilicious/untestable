@@ -1,17 +1,23 @@
 // How to run this test:
 // node <test_file_name> to run the test
 
+
 const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
+const assert = require('assert');
 
-(async function example() {
+describe("The Glass Door", function(){
+
+    // increase mocha timeout to 3 minutes, as browser tests can be slow
+    this.timeout(3 * 60000); 
 
     let driver;
-    try {
-        
-		// Start webdriver, using chromedriver
+
+    beforeEach(async function () {
+
+        // Start webdriver, using chromedriver
         const chromeDriverPath = path.resolve(__dirname,"..", "..","drivers","chromedriver")
         const serviceBuilder = new ServiceBuilder(chromeDriverPath);
         driver = await new Builder()
@@ -24,42 +30,50 @@ const { sleep } = require('../../utils/sleep');
             width: 1280,
             height: 800
         })
-    
-        // Open the test page
-        await driver.get('http://localhost:8000/the_glass_door.html');
-		await sleep(1500) // slow time to observe
 
-		// Step 1: Click the "Visit Chicago" button
-		let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
-		
-		/************************************************/
-		// TODO: click the button using webdriver click() method 
+    });
 
-		await driver.findElement(BUTTON_TO_CLICK).click()
+    it("button#visit-chicago-btn is clicked", async function(){
 
-		/************************************************/
+        try {
 
-		await sleep(1500) // slow time to observe
+             // Open the test page
+            await driver.get('http://localhost:8000/the_glass_door.html');
+            await sleep(1500) // slow time to observe
 
-		// Now: Validate that the button is clicked
-        let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
-		let LOG_SEEN = await checkLogMessage(driver, EXPECTED_LOG)
-        if(LOG_SEEN){
-            console.log("SUCCESS: " + EXPECTED_LOG)
-        } else {
-            console.error("FAILED: " + EXPECTED_LOG)
+            // Step 1: Click the "Visit Chicago" button
+            let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
+            
+            /************************************************/
+            // TODO: click the button using webdriver click() method 
+
+            await driver.findElement(BUTTON_TO_CLICK).click()
+
+            /************************************************/
+
+            await sleep(1500) // slow time to observe
+
+            // Now: Validate that the button is clicked
+            let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
+            let LOG_SEEN = await checkLogMessage(driver, EXPECTED_LOG)
+            if(!LOG_SEEN){
+                throw new Error("The button is did not receive a click.")
+            }
+
+        } catch(e) {
+            // maybe log the error?
+            throw e
         }
 
-    } catch(e) {
-        console.error("error: ", e.message)
-    } finally {
+    })
+
+    afterEach(async function () {
         if(driver){
-            await driver.close();
-            await driver.quit();
+            await driver.quit()
         }
-    }
+    });
 
-})();
+})
 
 /**
  * A helper function to check if a specific log message is printed to the logs

@@ -8,7 +8,7 @@
   "scripts": {
     "start": "PORT=8000 http-server ./public",
     "start-chromedriver": "./drivers/chromedriver",
-    "ts-node": "ts-node"
+    "test" : "mocha"
   },
   "keywords": [
     "selenium",
