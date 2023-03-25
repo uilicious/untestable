@@ -5,8 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
+const { TheFinger } = require("./the_finger.v3.js");
 
-describe("The Glass Door", function(){
+describe("The Russian Doll", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -31,31 +32,36 @@ describe("The Glass Door", function(){
 
     });
 
-    it("button#visit-chicago-btn is clicked", async function(){
+    it("button#nav-login-btn is clicked", async function(){
 
         try {
 
              // Open the test page
-            await driver.get('http://localhost:8000/the_glass_door.html');
+            await driver.get('http://localhost:8000/the_russian_doll.html');
             await sleep(1500) // slow time to observe
 
-            // Step 1: Click the "Visit Chicago" button
-            let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
-            
-            /************************************************/
-            // TODO: click the button using webdriver click() method 
+			 /************************************************/
+		
+            // TODO: initialise The Finger (it's already imported)
+			let finger = new TheFinger(driver)
 
-            await driver.findElement(BUTTON_TO_CLICK).click()
+             // TODO: click the toggle buttom
+			let SELECT_MENU_TOGGLE_BUTTON = By.id("input-country-of-residence-button")
+			finger.click(SELECT_MENU_TOGGLE_BUTTON)
+			await sleep(1500)
 
-            /************************************************/
+			// TODO: click the option
+			let SELECT_MENU_OPTION = By.xpath("//li[@class='ui-menu-item']/div[contains(text(),'Singapore')]")
+			finger.click(SELECT_MENU_OPTION)
+			await sleep(1500)
 
-            await sleep(1500) // slow time to observe
+			/************************************************/
 
-            // Validate that the button is clicked
-            let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
+            // Validate that the option is clicked
+            let EXPECTED_LOG = `"Singapore" option selected`
             let LOG_SEEN = await checkLogMessage(driver, EXPECTED_LOG)
             if(!LOG_SEEN){
-                throw new Error("The button did not receive a click.")
+                throw new Error("The select option did not receive a click.")
             }
 
         } catch(e) {

@@ -55,7 +55,7 @@ describe("The Dodgeball", function(){
 
             await sleep(1500) // slow time to observe
 
-            // Now: Validate that the button is clicked
+            // Validate that the button is clicked
             let EXPECTED_LOG = "\"button#nav-login-btn\" clicked."
             let LOG_SEEN = await checkLogMessage(driver, EXPECTED_LOG)
             if(!LOG_SEEN){
