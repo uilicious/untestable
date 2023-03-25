@@ -8,7 +8,7 @@ class TheFinger {
 
   constructor(driver) {
     this._driver = driver;
-    console.log("Using TheFinger (Version 3)...")
+    console.log("Using TheFinger (Version 4)...")
   }
 
   async click(target) {

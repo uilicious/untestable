@@ -39,8 +39,7 @@ describe("UNtestable UI", function(){
 	
 				 // Open the test page
 				await driver.get('http://localhost:8000/the_glass_door.html');
-				await sleep(1500) // slow time to observe
-	
+				
 				// Step 1: Click the "Visit Chicago" button
 				let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
 				
@@ -53,8 +52,6 @@ describe("UNtestable UI", function(){
 				await finger.click(BUTTON_TO_CLICK)
 	
 				/************************************************/
-	
-				await sleep(1500) // slow time to observe
 	
 				// Validate that the button is clicked
 				let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
@@ -78,7 +75,6 @@ describe("UNtestable UI", function(){
 	
 				 // Open the test page
 				await driver.get('http://localhost:8000/the_clone.html');
-				await sleep(1500) // slow time to observe
 	
 				// Step 1: Click the "Visit Chicago" button
 				let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
@@ -92,9 +88,6 @@ describe("UNtestable UI", function(){
 				await finger.click(BUTTON_TO_CLICK)
 	
 				/************************************************/
-	
-	
-				await sleep(1500) // slow time to observe
 	
 				// Validate that the button is clicked
 				let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
@@ -118,7 +111,6 @@ describe("UNtestable UI", function(){
 	
 				 // Open the test page
 				await driver.get('http://localhost:8000/the_dodgeball.html');
-				await sleep(1500) // slow time to observe
 	
 				// Step 1: Click the "Login" button
 				let BUTTON_TO_CLICK = By.id("nav-login-btn")
@@ -132,8 +124,6 @@ describe("UNtestable UI", function(){
 				await finger.click(BUTTON_TO_CLICK)
 	
 				/************************************************/
-	
-				await sleep(1500) // slow time to observe
 	
 				// Validate that the button is clicked
 				let EXPECTED_LOG = "\"button#nav-login-btn\" clicked."
@@ -157,7 +147,6 @@ describe("UNtestable UI", function(){
 	
 				 // Open the test page
 				await driver.get('http://localhost:8000/the_russian_doll.html');
-				await sleep(1500) // slow time to observe
 	
 				 /************************************************/
 			
@@ -167,12 +156,10 @@ describe("UNtestable UI", function(){
 				 // TODO: click the toggle buttom
 				let SELECT_MENU_TOGGLE_BUTTON = By.id("input-country-of-residence-button")
 				await finger.click(SELECT_MENU_TOGGLE_BUTTON)
-				await sleep(2000)
 	
 				// TODO: click the option
 				let SELECT_MENU_OPTION = By.xpath("//li[@class='ui-menu-item']/div[contains(text(),'Singapore')]")
 				await finger.click(SELECT_MENU_OPTION)
-				await sleep(3000)
 	
 				/************************************************/
 	
