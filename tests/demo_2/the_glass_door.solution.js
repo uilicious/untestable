@@ -46,13 +46,12 @@ describe("The Glass Door", function(){
             /************************************************/
 		
             // TODO: initialise The Finger (it's already imported)
-            
+            let finger = new TheFinger(driver)
 
             // TODO: click using The Finger
-            
+            await finger.click(BUTTON_TO_CLICK)
 
             /************************************************/
-
 
             await sleep(1500) // slow time to observe
 
