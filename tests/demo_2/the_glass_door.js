@@ -5,6 +5,7 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
+const { TheFinger } = require("./the_finger.v1.solution.js");
 
 describe("The Glass Door", function(){
 
@@ -43,11 +44,15 @@ describe("The Glass Door", function(){
             let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
             
             /************************************************/
-            // TODO: click the button using webdriver click() method 
+		
+            // TODO: initialise The Finger (it's already imported)
+            let finger = new TheFinger(driver)
 
-            await driver.findElement(BUTTON_TO_CLICK).click()
+            // TODO: click using The Finger
+            await finger.click(BUTTON_TO_CLICK)
 
             /************************************************/
+
 
             await sleep(1500) // slow time to observe
 
