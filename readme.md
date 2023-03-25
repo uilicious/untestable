@@ -32,7 +32,12 @@ This will start the web application at [http://localhost:8080](http://localhost:
 
 ### Step 3: Running the test
 
-> ...
+Tests are located in the `./tests` folder.
+
+To run a test, run the following in the command line:
+```
+npm run test <path/to/test/file>
+```
 
 ## The finger
 
