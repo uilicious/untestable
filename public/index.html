@@ -4,11 +4,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNTestable buttons</title>
+    <title>UNTestable Site</title>
+
+    <!-- preload fonts -->
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Light.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Regular.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Bold.ttf" as="font" crossorigin="anonymous" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/site.css">
+
+    <style>
+        .level-card-list .card {
+            height: 100px;
+            width: 300px;
+        }
+        .level-card-list .card .card-title {
+            justify-content: flex-start;
+        }
+    </style>
+
 </head>
 <body>
 
-    todo: write an intro
+    <div style="max-width: 1080px; margin: 0 auto">
+
+        <h1>Welcome to the UNTestable Site</h1>
+
+        <p>This site contains an exhibit of different kinds of UI components. Some of them may be easy to test, and some are hard. You can use this site to practice writing browser automation scripts.</p>
+
+        <h2>Gallery</h2>
+
+        <h3>Buttons</h3>
+
+        <div class="card-list level-card-list">
+
+            <div class="card">
+                <a href="/the_glass_door.html">
+                  <div class="card-title">
+                    Level 1<br>
+                    The Glass Door
+                  </div>  
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="/the_glass_door.html">
+                  <div class="card-title">
+                    Level 2<br>
+                    The Clone
+                  </div>  
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="/the_glass_door.html">
+                  <div class="card-title">
+                    Level 3<br>
+                    The Dodgeball
+                  </div>  
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="/the_glass_door.html">
+                  <div class="card-title">
+                    Level 4<br>
+                    The Russian Doll
+                  </div>  
+                </a>
+            </div>
+
+        </div>
+
+    </div>
     
 </body>
 </html>

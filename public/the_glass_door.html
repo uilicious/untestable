@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Glass Door | UNtestable buttons</title>
 
+    <!-- preload fonts -->
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Light.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Regular.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Bold.ttf" as="font" crossorigin="anonymous" />
+
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/site.css">
 
@@ -100,5 +105,28 @@
         </div>
     </div>
     
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        var myCanvas = document.createElement('canvas');
+        document.body.appendChild(myCanvas);
+
+        var myConfetti = confetti.create(myCanvas, {
+            resize: true,
+            useWorker: true
+            });
+            myConfetti({
+            particleCount: 100,
+            spread: 160
+            // any other options from the global
+            // confetti function
+        });
+
+        var btn = document.getElementById("visit-chicago-btn")
+        btn.addEventListener("click", ()=>{
+            confetti()
+        })
+    </script>
+
 </body>
 </html>
