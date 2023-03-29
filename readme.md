@@ -20,6 +20,17 @@ npm run start
 
 This will start the web applications at [http://localhost:8080](http://localhost:8080).
 
+### Running tests
+
+This project uses the [Mocha](https://mochajs.org/) as the test framework.
+
+To run a test:
+```
+npm run test <path/to/the/test/file>
+```
+
+Tests are placed in the `/tests` folder.
+
 ### Submitting a new untestable component
 
 We will love contributions to gallery of untestable UI components.
