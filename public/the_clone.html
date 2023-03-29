@@ -21,45 +21,46 @@
 </head>
 <body>
 
-    <div id="app">
-        <div id="info">
-            <div class="level-info">
-                <div class="level-info-number">Level 2</div>
-                <div class="level-info-name">The Clone</div>
-                <div class="level-info-description">
-                    <p>
-                        This example exhibits a "Card List" component that continuously re-renders its contents. The re-render happens so fast that it is not perceivable to humans, but can disrupt bots.
-                    </p>
-                    <hr>
-                    <p>
-                        <b>Exercise</b> <br>
-                        Write a test that fulfils the following requirements:
-                    </p>
-                    <ul>
-                        <li>
-                            Performs a click on exactly the <code>"button#visit-chicago-btn"</code>, not the <code>".card"</code> element that wraps it, and not the <code>"label"</code> that is over the button.
-                        </li>
-                        <li>
-                            No use of Javascript clicks.
-                        </li>
-                        <li>
-                            If the click is successful, you'll see <code>""button#visit-chicago-btn" clicked."</code> in the logs below.
-                        </li>
-                    </ul>
-                </div>
-                <div class="level-page-links">
-                    <a href="./the_glass_door.html">Previous Level</a>
-                    <a href="./the_dodgeball.html">Next Level</a>
-                </div>
+    <aside id="info">
+        <div class="level-info">
+            <div class="level-info-number">Level 2</div>
+            <div class="level-info-name">The Clone</div>
+            <div class="level-info-description">
+                <p>
+                    This example exhibits a "Card List" component that continuously re-renders its contents. The re-render happens so fast that it is not perceivable to humans, but can disrupt bots.
+                </p>
                 <hr>
+                <p>
+                    <b>Exercise</b> <br>
+                    Write a test that fulfils the following requirements:
+                </p>
+                <ul>
+                    <li>
+                        Performs a click on exactly the <code>"button#visit-chicago-btn"</code>, not the <code>".card"</code> element that wraps it, and not the <code>"label"</code> that is over the button.
+                    </li>
+                    <li>
+                        No use of Javascript clicks.
+                    </li>
+                    <li>
+                        If the click is successful, you'll see <code>""button#visit-chicago-btn" clicked."</code> in the logs below.
+                    </li>
+                </ul>
             </div>
-            <div id="log">
-                <div class="log-header">
-                    <div class="log-title">Logs</div>
-                    <a href="#clearLogs" onclick="clearLogs()">Clear</a>
-                </div>
+            <div class="level-page-links">
+                <a href="./the_glass_door.html">Previous Level</a>
+                <a href="./the_dodgeball.html">Next Level</a>
+            </div>
+            <hr>
+        </div>
+        <div id="log">
+            <div class="log-header">
+                <div class="log-title">Logs</div>
+                <a href="#clearLogs" onclick="clearLogs()">Clear</a>
             </div>
         </div>
+    </aside>
+
+    <div id="app">
         <div id="page">
             <div id="page-content">
                 <h1>Where would you like to go?</h1>
@@ -88,6 +89,32 @@
         renderCardList(cardListElement)
     }, 500)
 
+</script>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    var myCanvas = document.createElement('canvas');
+    document.body.appendChild(myCanvas);
+
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+        });
+        myConfetti({
+        particleCount: 500,
+        spread: 300,
+        gravity: .5,
+        scalar: 5
+        // any other options from the global
+        // confetti function
+    });
+
+    document.addEventListener("click", function (event){
+        if(event.target.getAttribute("id") === "visit-chicago-btn"){
+            confetti()
+        }
+    })
 </script>
 
 </html>

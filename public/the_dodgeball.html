@@ -21,47 +21,47 @@
 </head>
 <body>
 
-    <div id="app">
-
-        <div id="info">
-            <div class="level-info">
-                <div class="level-info-number">Level 3</div>
-                <div class="level-info-name">The Dodgeball</div>
-                <div class="level-info-description">
-                    <p>
-                        This example exhibits a "Login" button contained within a navigation menu that expands on hover, requiring the user to reposition their mouse to click the button.
-                    </p>
-                    <hr>
-                    <p>
-                        <b>Exercise:</b><br>
-                        Write a test that fulfils the following requirements:
-                    </p>
-                    <ul>
-                        <li>
-                            Performs a click on the <code>"button#nav-login-btn"</code>.
-                        </li>
-                        <li>
-                            No use of Javascript clicks.
-                        </li>
-                        <li>
-                            If the click is successful, you'll see <code>"button#nav-login-btn" clicked."</code> in the logs below.
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="level-page-links">
-                    <a href="./the_clone.html">Previous Level</a>
-                    <a href="./the_russian_doll.html">Next Level</a>
-                </div>
+    <aside id="info">
+        <div class="level-info">
+            <div class="level-info-number">Level 3</div>
+            <div class="level-info-name">The Dodgeball</div>
+            <div class="level-info-description">
+                <p>
+                    This example exhibits a "Login" button contained within a navigation menu that expands on hover, requiring the user to reposition their mouse to click the button.
+                </p>
                 <hr>
+                <p>
+                    <b>Exercise:</b><br>
+                    Write a test that fulfils the following requirements:
+                </p>
+                <ul>
+                    <li>
+                        Performs a click on the <code>"button#nav-login-btn"</code>.
+                    </li>
+                    <li>
+                        No use of Javascript clicks.
+                    </li>
+                    <li>
+                        If the click is successful, you'll see <code>"button#nav-login-btn" clicked."</code> in the logs below.
+                    </li>
+                </ul>
             </div>
-            <div id="log">
-                <div class="log-header">
-                    <div class="log-title">Logs</div>
-                    <a href="#clearLogs" onclick="clearLogs()">Clear</a>
-                </div>
+            
+            <div class="level-page-links">
+                <a href="./the_clone.html">Previous Level</a>
+                <a href="./the_russian_doll.html">Next Level</a>
+            </div>
+            <hr>
+        </div>
+        <div id="log">
+            <div class="log-header">
+                <div class="log-title">Logs</div>
+                <a href="#clearLogs" onclick="clearLogs()">Clear</a>
             </div>
         </div>
+    </aside>
+
+    <div id="app">
 
         <div id="page">
 
@@ -105,6 +105,31 @@
         renderCardList(cardListElement)
     }, 500)
 
+</script>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    var myCanvas = document.createElement('canvas');
+    document.body.appendChild(myCanvas);
+
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+        });
+        myConfetti({
+        particleCount: 500,
+        spread: 300,
+        gravity: .5,
+        scalar: 5
+        // any other options from the global
+        // confetti function
+    });
+
+    var btn = document.getElementById("nav-login-btn")
+    btn.addEventListener("click", ()=>{
+        confetti()
+    })
 </script>
 
 </html>

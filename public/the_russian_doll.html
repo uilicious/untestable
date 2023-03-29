@@ -26,47 +26,47 @@
 </head>
 <body>
 
-    <div id="app">
-
-        <div id="info">
-            <div class="level-info">
-                <div class="level-info-number">Level 4</div>
-                <div class="level-info-name">The Russian Doll</div>
-                <div class="level-info-description">
-                    <p>
-                        This example exhibits a scrollable page, which has a "Country of Residence" dropdown field that uses "Jquery UI Select Menu", which displays options within a scrollable dropdown menu.
-                    </p>
-                    <hr>
-                    <p>
-                        <b>Exercise:</b><br>
-                        Write a test that fulfils the following requirements:
-                    </p>
-                    <ul>
-                        <li>
-                            Clicks to select the "Singapore" option in the "Country of Residence" dropdown field.
-                        </li>
-                        <li>
-                            No use of Javascript clicks.
-                        </li>
-                        <li>
-                            If the click is successful, you'll see <code>"Singapore" option selected.</code> in the logs below.
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="level-page-links">
-                    <a href="./the_dodgeball.html">Previous Level</a>
-                    <a href="#"></a>
-                </div>
+    <aside id="info">
+        <div class="level-info">
+            <div class="level-info-number">Level 4</div>
+            <div class="level-info-name">The Russian Doll</div>
+            <div class="level-info-description">
+                <p>
+                    This example exhibits a scrollable page, which has a "Country of Residence" dropdown field that uses "Jquery UI Select Menu", which displays options within a scrollable dropdown menu.
+                </p>
                 <hr>
+                <p>
+                    <b>Exercise:</b><br>
+                    Write a test that fulfils the following requirements:
+                </p>
+                <ul>
+                    <li>
+                        Clicks to select the "Singapore" option in the "Country of Residence" dropdown field.
+                    </li>
+                    <li>
+                        No use of Javascript clicks.
+                    </li>
+                    <li>
+                        If the click is successful, you'll see <code>"Singapore" option selected.</code> in the logs below.
+                    </li>
+                </ul>
             </div>
-            <div id="log">
-                <div class="log-header">
-                    <div class="log-title">Logs</div>
-                    <a href="#clearLogs" onclick="clearLogs()">Clear</a>
-                </div>
+            
+            <div class="level-page-links">
+                <a href="./the_dodgeball.html">Previous Level</a>
+                <a href="#"></a>
+            </div>
+            <hr>
+        </div>
+        <div id="log">
+            <div class="log-header">
+                <div class="log-title">Logs</div>
+                <a href="#clearLogs" onclick="clearLogs()">Clear</a>
             </div>
         </div>
+    </aside>
+
+    <div id="app">
 
         <div id="page">
 
@@ -165,6 +165,32 @@
         })
         .catch((e)=>{console.error("error fetching countries.json: ",e)})
 
+</script>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    var myCanvas = document.createElement('canvas');
+    document.body.appendChild(myCanvas);
+
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+        });
+        myConfetti({
+        particleCount: 500,
+        spread: 300,
+        gravity: .5,
+        scalar: 5
+        // any other options from the global
+        // confetti function
+    });
+
+    document.addEventListener("click", function (event){
+        if(event.target.getAttribute("id") === "visit-chicago-btn"){
+            confetti()
+        }
+    })
 </script>
 
 </html>

@@ -112,15 +112,31 @@ body {
     margin: 0;
 }
 
+:root {
+    --aside-info-width: 400px;
+}
+
+aside#info {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: var(--aside-info-width);
+}
+
+aside#info ~ #app {
+    padding-left: var(--aside-info-width);
+}
+
 #app {
 
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
 
     width: 100vw;
     height: 100vh;
 
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: auto;
 
 }
@@ -473,4 +489,11 @@ form input[type="submit"]{
 
 .ui-selectmenu-menu .ui-menu {
     height: 200px;
+}
+
+/* Utilities */
+
+.unscrollable {
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
