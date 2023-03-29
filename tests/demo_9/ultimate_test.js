@@ -5,7 +5,8 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_ultimate_finger");
+// const { TheFinger } = require("./the_ultimate_finger");
+const { TheFinger } = require("selenium-finger");
 
 describe("UNtestable UI", function(){
 

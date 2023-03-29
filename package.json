@@ -8,7 +8,7 @@
   "scripts": {
     "start": "PORT=8000 http-server ./public",
     "start-chromedriver": "./drivers/chromedriver",
-    "test" : "mocha"
+    "test": "mocha"
   },
   "keywords": [
     "selenium",
@@ -19,9 +19,10 @@
   "license": "MIT",
   "devDependencies": {
     "@types/selenium-webdriver": "^4.1.13",
+    "http-server": "^14.1.1",
     "mocha": "^10.2.0",
-    "selenium-webdriver": "^4.8.1",
-    "http-server": "^14.1.1"
+    "selenium-finger": "^1.0.0",
+    "selenium-webdriver": "^4.8.1"
   },
   "repository": {
     "type": "git",
