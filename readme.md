@@ -1,44 +1,27 @@
 # Untestable
 
-Untestable is a website that works perfectly for human beings, but breaks browser automation scripts.
+> **Testability**: A characteristic of an item's design which allows the status (operable, inoperable or degraded) of that item to be confidently and quickly determined. - An Elementary Guide To Reliability (Fifth Edition), 1997
 
-## Levels
+[Untestable.site](https://untestable.site) is a website that exhibits UI components that works perfectly for human beings, but breaks browser automation scripts. Feel free to use it to practice writing tests script. Contributions to add to the gallery of untestable components are very welcomed.
 
-### Level 1
+## Contributing to the untestable.site
 
-### Level 2
+### Setting up the project locally
 
-### Level 3
-
-### Level 4
-
-## Setting up the project locally
-
-### Step 1: Install dependences
-
-Install dependencies by running the following in the command line:
+Step 1 : Install dependencies
 ```
 npm install
 ```
 
-
-### Step 2: Start the web application
-
-To start the web application, run the following in the command line:
+Step 2: Start the web application
 ```
 npm run start
 ```
-This will start the web application at [http://localhost:8080](http://localhost:8080).
 
-### Step 3: Running the test
+This will start the web applications at [http://localhost:8080](http://localhost:8080).
 
-Tests are located in the `./tests` folder.
+### Submitting a new untestable component
 
-To run a test, run the following in the command line:
-```
-npm run test <path/to/test/file>
-```
+We will love contributions to gallery of untestable UI components.
 
-## The finger
-
-> ...
+Feel free to **fork** this repository, create a demo page for the untestable UI component, alongside working tests with workarounds to test such components, and submit a pull request.
