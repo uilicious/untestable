@@ -122,75 +122,77 @@
             </div>
         </div>
     </div>
-    
-</body>
 
-<script>
+    <script>
 
-    let cardListElement = document.getElementsByClassName("card-list")[0]
+        let cardListElement = document.getElementsByClassName("card-list")[0]
 
-    // first time rendering
-    renderCardList(cardListElement) 
+        // first time rendering
+        renderCardList(cardListElement) 
 
-    //
-    // Re-render template, every 500ms
-    // - a few older frameworks have this buggy behavior of rerendering components, 
-    //   which is not perceivable to the end user.
-    //
-    setInterval(function(){
-        renderCardList(cardListElement)
-    }, 500)
+        //
+        // Re-render template, every 500ms
+        // - a few older frameworks have this buggy behavior of rerendering components, 
+        //   which is not perceivable to the end user.
+        //
+        setInterval(function(){
+            renderCardList(cardListElement)
+        }, 500)
 
-    // prepare city tour select dropdown menu
-    $("#input-tour-city").selectmenu({})
+        // prepare city tour select dropdown menu
+        $("#input-tour-city").selectmenu({})
 
-    // prepare country of residence select dropdown
-    fetch(new Request("./data/countries.json"))
-        .then((res)=>{
-            return res.json()
-        })
-        .then((data)=>{
-            let selectElement = document.getElementById("input-country-of-residence")
-            data.forEach((country)=>{
-                let optionElement = document.createElement("option")
-                optionElement.setAttribute("value", country.code)
-                optionElement.innerText = country.name;
-                selectElement.appendChild(optionElement)
+        // prepare country of residence select dropdown
+        fetch(new Request("./data/countries.json"))
+            .then((res)=>{
+                return res.json()
             })
-            $("#input-country-of-residence").selectmenu({
-                change: function( event, ui ) {
-                    log("\"" + ui.item.label + "\" option selected.")
-                }
+            .then((data)=>{
+                let selectElement = document.getElementById("input-country-of-residence")
+                data.forEach((country)=>{
+                    let optionElement = document.createElement("option")
+                    optionElement.setAttribute("value", country.code)
+                    optionElement.innerText = country.name;
+                    selectElement.appendChild(optionElement)
+                })
+                $("#input-country-of-residence").selectmenu({
+                    change: function( event, ui ) {
+                        log("\"" + ui.item.label + "\" option selected.")
+                    }
+                })
             })
-        })
-        .catch((e)=>{console.error("error fetching countries.json: ",e)})
+            .catch((e)=>{console.error("error fetching countries.json: ",e)})
 
-</script>
+    </script>
 
-<!-- Confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script>
-    var myCanvas = document.createElement('canvas');
-    document.body.appendChild(myCanvas);
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        var myCanvas = document.createElement('canvas');
+        document.body.appendChild(myCanvas);
 
-    var myConfetti = confetti.create(myCanvas, {
-        resize: true,
-        useWorker: true
+        var myConfetti = confetti.create(myCanvas, {
+            resize: true,
+            useWorker: true
+            });
+            myConfetti({
+            particleCount: 500,
+            spread: 300,
+            gravity: .5,
+            scalar: 5
+            // any other options from the global
+            // confetti function
         });
-        myConfetti({
-        particleCount: 500,
-        spread: 300,
-        gravity: .5,
-        scalar: 5
-        // any other options from the global
-        // confetti function
-    });
 
-    document.addEventListener("click", function (event){
-        if(event.target.getAttribute("role") === "option" && event.target.innerText === "Singapore"){
-            confetti()
-        }
-    })
-</script>
+        document.addEventListener("click", function (event){
+            if(event.target.getAttribute("role") === "option" && event.target.innerText === "Singapore"){
+                confetti()
+            }
+        })
+    </script>
 
+    <!-- Github banner -->
+    <script src="/js/github_banner.js"></script>
+
+</body>
 </html>
