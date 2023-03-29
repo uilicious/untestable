@@ -125,6 +125,7 @@ aside#info {
     top: 0;
     bottom: 0;
     width: var(--aside-info-width);
+    overflow-y: auto;
 }
 
 aside#info ~ #app {
