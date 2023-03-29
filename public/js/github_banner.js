@@ -9,7 +9,7 @@
 	} else {
 		url += location.pathname 
 	}
-	if(!location.pathname.endsWith(".html")){
+	if(!url.endsWith(".html")){
 		url += ".html"
 	}
 	banner.setAttribute("href", url)
