@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v2.solution.js");
+const { TheFinger } = require("./the_finger.v1.solution.js");
 
-describe("The Clone", function(){
+describe("2s. The Glass Door (Workaround Solution)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -37,7 +37,7 @@ describe("The Clone", function(){
         try {
 
              // Open the test page
-            await driver.get('http://localhost:8000/the_clone.html');
+            await driver.get('http://localhost:8000/the_glass_door.html');
             await sleep(1500) // slow time to observe
 
             // Step 1: Click the "Visit Chicago" button
@@ -52,7 +52,6 @@ describe("The Clone", function(){
             await finger.click(BUTTON_TO_CLICK)
 
             /************************************************/
-
 
             await sleep(1500) // slow time to observe
 

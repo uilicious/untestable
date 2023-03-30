@@ -8,7 +8,7 @@ const { sleep } = require('../../utils/sleep');
 // const { TheFinger } = require("./the_ultimate_finger");
 const { TheFinger } = require("selenium-finger");
 
-describe("UNtestable UI", function(){
+describe("9. UNtestable UI (Finger)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 

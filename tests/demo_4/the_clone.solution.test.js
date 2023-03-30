@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v1.js");
+const { TheFinger } = require("./the_finger.v2.solution.js");
 
-describe("The Clone", function(){
+describe("4. The Clone (Workaround Solution)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -44,9 +44,6 @@ describe("The Clone", function(){
             let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
             
             /************************************************/
-
-            // This will produce "stale element reference" error
-            // await driver.findElement(BUTTON_TO_CLICK).click()
 		
             // TODO: initialise The Finger (it's already imported)
             let finger = new TheFinger(driver)

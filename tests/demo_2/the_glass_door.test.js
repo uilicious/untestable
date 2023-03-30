@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v1.solution.js");
+const { TheFinger } = require("./the_finger.v1.js");
 
-describe("The Glass Door", function(){
+describe("2. The Glass Door (Workaround)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -46,12 +46,12 @@ describe("The Glass Door", function(){
             /************************************************/
 		
             // TODO: initialise The Finger (it's already imported)
-            let finger = new TheFinger(driver)
+            
 
             // TODO: click using The Finger
-            await finger.click(BUTTON_TO_CLICK)
-
+            
             /************************************************/
+
 
             await sleep(1500) // slow time to observe
 

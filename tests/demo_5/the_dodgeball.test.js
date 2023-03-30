@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v1.js");
+const { TheFinger } = require("./the_finger.v2.js");
 
-describe("The Glass Door", function(){
+describe("5. The Dodgeball (Broken - Finger)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -32,32 +32,31 @@ describe("The Glass Door", function(){
 
     });
 
-    it("button#visit-chicago-btn is clicked", async function(){
+    it("button#nav-login-btn is clicked", async function(){
 
         try {
 
              // Open the test page
-            await driver.get('http://localhost:8000/the_glass_door.html');
+            await driver.get('http://localhost:8000/the_dodgeball.html');
             await sleep(1500) // slow time to observe
 
-            // Step 1: Click the "Visit Chicago" button
-            let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
+            // Step 1: Click the "Login" button
+            let BUTTON_TO_CLICK = By.id("nav-login-btn")
             
             /************************************************/
 		
             // TODO: initialise The Finger (it's already imported)
-
+            let finger = new TheFinger(driver)
 
             // TODO: click using The Finger
-            
+            await finger.click(BUTTON_TO_CLICK)
 
             /************************************************/
-
 
             await sleep(1500) // slow time to observe
 
             // Validate that the button is clicked
-            let EXPECTED_LOG = "\"button#visit-chicago-btn\" clicked."
+            let EXPECTED_LOG = "\"button#nav-login-btn\" clicked."
             let LOG_SEEN = await checkLogMessage(driver, EXPECTED_LOG)
             if(!LOG_SEEN){
                 throw new Error("The button did not receive a click.")

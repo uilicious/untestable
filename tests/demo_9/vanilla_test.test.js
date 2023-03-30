@@ -7,7 +7,7 @@ const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
 const { TheFinger } = require("./the_ultimate_finger");
 
-describe("UNtestable UI", function(){
+describe("9v. UNtestable UI (Vanilla)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
