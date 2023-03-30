@@ -8,10 +8,12 @@ class TheFinger {
 
   constructor(driver) {
     this._driver = driver;
-    console.log("Using TheFinger (Version 2)...")
+    console.log("Using TheFinger (Version 3)...")
   }
 
   async click(target) {
+
+    let driver = this._driver
 
     console.log("Target is: ", JSON.stringify(target)); // will be  {using: 'css selector', value: '<css expression>'}
 
@@ -19,13 +21,38 @@ class TheFinger {
 
     // STEPS:
     // 1. Get the center point of the button
-    // 2. Move the mouse to the center point of the button, then press the left mouse button
+    // 2. Move the mouse to the center point of the button, then wait
+    // 3. Get the center point of the button again
+    // 4. Move the mouse to the center point of the button, then actually click
 
+ 
     // Step 1: Get the center point of the button
+    let res = await this.findElement(target)
+
+    // TODO:
+    // Step 2: Move the mouse to the center point, using the actions method
+   
+
+    // wait for any animations to complete
+    await sleep(500)
+
+    // Step 3: Get the center point of the button
+    res = await this.findElement(target)
+
+    // TODO:
+    // Step 4: Move the mouse to the center point, using the actions method, then actually click on the element
+    
+    
+    /************************************************/
+
+  }
+
+  async findElement(target) {
+
+    // Get the center point of the button
     // - Note that we cannot use the driver.findElement method, since the target keeps re-rendering
     // - Hence, we'll use a retry loop that calls the the driver.executeScript method to find the element and get its position
-
-    let res = await retryUntil(
+    return await retryUntil(
       // function to retry
       async () => {
         // keep trying to get the element
@@ -67,30 +94,8 @@ class TheFinger {
       // condition to stop retrying
       (res)=>{
         return res && res.element != null
-      },
-      // TODO: timeout
-      5
+      }
     )
-
-    console.log("res: ", res)
-
-    console.log("The center point of the target element is at (" + res.x + ", " + res.y + ").")
-    
-    // Step 2: Move the mouse to the center point, using the actions method
-    let actions = this._driver.actions()
-    await actions
-      .move({
-          origin: "viewport", // x and y are relative to the "viewport", meaning the current scrolled position on the page
-          x: res.x,
-          y: res.y,
-          duration: 200 // move at a "humanely" fast speed
-      })
-      .press()  // press a mouse button at the current location, by default LEFT
-      .release() // release a mouse button
-      .perform() // execute the actions
-    
-    /************************************************/
-
   }
 
 }

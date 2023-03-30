@@ -50,6 +50,7 @@ describe("2. The Glass Door (Workaround)", function(){
 
             // TODO: click using The Finger
             
+            
             /************************************************/
 
 

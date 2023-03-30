@@ -7,7 +7,7 @@ const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
 const { TheFinger } = require("./the_finger.v1.js");
 
-describe("3. The Clone (Broken - Finger)", function(){
+describe("3. The Clone (Unstable - Finger)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 

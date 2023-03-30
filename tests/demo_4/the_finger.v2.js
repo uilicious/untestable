@@ -12,6 +12,8 @@ class TheFinger {
 
   async click(target) {
 
+    let driver = this._driver;
+
     console.log("Target is: ", JSON.stringify(target)); // will be  {using: 'css selector', value: '<css expression>'}
 
     /************************************************/
@@ -71,18 +73,10 @@ class TheFinger {
 
     console.log("The center point of the target element is at (" + res.x + ", " + res.y + ").")
     
+
+    // TODO: Using the actions method, move the mouse to the center point, then click
     // Step 2: Move the mouse to the center point, using the actions method
-    let actions = this._driver.actions()
-    await actions
-      .move({
-          origin: "viewport", // x and y are relative to the "viewport", meaning the current scrolled position on the page
-          x: res.x,
-          y: res.y,
-          duration: 200 // move at a "humanely" fast speed
-      })
-      .press()  // press a mouse button at the current location, by default LEFT
-      .release() // release a mouse button
-      .perform() // execute the actions
+   
     
     /************************************************/
 

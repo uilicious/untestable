@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v2.solution.js");
+const { TheFinger } = require("./the_finger.v2.js");
 
-describe("4. The Clone (Broken - Finger)", function(){
+describe("4. The Clone (Workaround)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -52,7 +52,6 @@ describe("4. The Clone (Broken - Finger)", function(){
             await finger.click(BUTTON_TO_CLICK)
 
             /************************************************/
-
 
             await sleep(1500) // slow time to observe
 
