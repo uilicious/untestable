@@ -48,12 +48,12 @@ describe("7. The Russian Doll (Broken - Finger)", function(){
              // TODO: click the toggle buttom
 			let SELECT_MENU_TOGGLE_BUTTON = By.id("input-country-of-residence-button")
 			await finger.click(SELECT_MENU_TOGGLE_BUTTON)
-			await sleep(2000)
+			await sleep(2000) // slow time to observe
 
 			// TODO: click the option
 			let SELECT_MENU_OPTION = By.xpath("//li[@class='ui-menu-item']/div[contains(text(),'Singapore')]")
 			await finger.click(SELECT_MENU_OPTION)
-			await sleep(3000)
+			await sleep(3000) // slow time to observe
 
 			/************************************************/
 

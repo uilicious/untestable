@@ -9,7 +9,7 @@ class TheFinger {
     console.log("Using TheFinger (Version 1)...")
   }
 
-  async click(target) {
+  async click(locator) {
 
     /************************************************/
 
@@ -19,7 +19,7 @@ class TheFinger {
     // 3. Click on the top element instead
 
     // TODO: get the target element
-    let element = await this._driver.findElement(target)
+    let element = await this._driver.findElement(locator)
 
     // TODO: write a script to get the position of the button and the top element at the point
     let res = await this._driver.executeScript(function(element){ 
@@ -52,7 +52,7 @@ class TheFinger {
 
   }
 
-  async findElement(target) {
+  async findElement(locator) {
   
   }
 }

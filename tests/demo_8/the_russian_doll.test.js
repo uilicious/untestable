@@ -5,9 +5,9 @@ const path = require('path');
 const { ServiceBuilder } = require('selenium-webdriver/chrome');
 const { Builder, By } = require('selenium-webdriver');
 const { sleep } = require('../../utils/sleep');
-const { TheFinger } = require("./the_finger.v4.solution.js");
+const { TheFinger } = require("./the_finger.v4.js");
 
-describe("8s. The Russian Doll (Workaround Solution)", function(){
+describe("8. The Russian Doll (Workaround)", function(){
 
     // increase mocha timeout to 3 minutes, as browser tests can be slow
     this.timeout(3 * 60000); 
@@ -48,12 +48,12 @@ describe("8s. The Russian Doll (Workaround Solution)", function(){
              // TODO: click the toggle buttom
 			let SELECT_MENU_TOGGLE_BUTTON = By.id("input-country-of-residence-button")
 			await finger.click(SELECT_MENU_TOGGLE_BUTTON)
-			await sleep(2000)
+			await sleep(2000) // slow time to observe
 
 			// TODO: click the option
 			let SELECT_MENU_OPTION = By.xpath("//li[@class='ui-menu-item']/div[contains(text(),'Singapore')]")
 			await finger.click(SELECT_MENU_OPTION)
-			await sleep(3000)
+			await sleep(3000) // slow time to observe
 
 			/************************************************/
 

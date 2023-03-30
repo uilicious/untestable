@@ -9,7 +9,7 @@ class TheFinger {
     console.log("Using TheFinger (Version 1)...")
   }
 
-  async click(target) {
+  async click(locator) {
 
     let driver = this._driver;
 
@@ -22,20 +22,27 @@ class TheFinger {
 
     // TODO: get the target element reference using findElement
     
+    
     // TODO: write a script to get the position of the button and the top element at the point
     // - use driver.executeScript to run js function on the browser-side
     //   - [STEP 1] use getBoundingClientRect() to get the center point of the element
+    //     MDN: https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
     //   - [STEP 2] use document.elementFromPoint(x,y) to get the top element at point
+    //     MDN: https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
     //   - return the position, and the top element
+    
+
+    
  
     // [STEP 3]: Click on the top element instead
     // TODO: click on the top element using webdriver .click() method
+    
   
     /************************************************/
 
-    console.log("The center point of the target element is at (" + res.x + ", " + res.y + ").")
+    console.log("The center point of the target element is at (" + x + ", " + y + ").")
     
-    let topElementHTML = res.topElementHTML.replace(/(\n\s*)/gi, "") // clean up extra whitespaces
+    topElementHTML = topElementHTML.replace(/(\n\s*)/gi, "") // clean up extra whitespaces
     console.log("The topmost element at that point is :\n" + topElementHTML)
 
   }

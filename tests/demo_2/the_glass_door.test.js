@@ -47,9 +47,7 @@ describe("2. The Glass Door (Workaround)", function(){
 		
             // TODO: initialise The Finger (it's already imported)
             
-
             // TODO: click using The Finger
-            
             
             /************************************************/
 

@@ -43,9 +43,8 @@ describe("1. The Glass Door (Broken - Vanilla)", function(){
             let BUTTON_TO_CLICK = By.id("visit-chicago-btn")
             
             /************************************************/
-            // TODO: click the button using webdriver click() method 
+            // TODO: findElement, then click the button using click() method 
 
-            await driver.findElement(BUTTON_TO_CLICK).click()
 
             /************************************************/
 

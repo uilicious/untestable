@@ -11,9 +11,9 @@ class TheFinger {
     console.log("Using TheFinger (Version 4)...")
   }
 
-  async click(target) {
+  async click(locator) {
 
-    console.log("Target is: ", JSON.stringify(target)); // will be  {using: 'css selector', value: '<css expression>'}
+    console.log("Target is: ", JSON.stringify(locator)); // will be  {using: 'css selector', value: '<css expression>'}
 
     /************************************************/
 
@@ -25,7 +25,7 @@ class TheFinger {
 
  
     // Step 1: Get the center point of the button
-    let res = await this.findElement(target)
+    let res = await this.findElement(locator)
 
     // Step 2: Move the mouse to the center point, using the actions method
     let actions = this._driver.actions()
@@ -42,7 +42,7 @@ class TheFinger {
     await sleep(500)
 
     // Step 3: Get the center point of the button
-    res = await this.findElement(target)
+    res = await this.findElement(locator)
 
     // Step 4: Move the mouse to the center point, using the actions method
     actions = this._driver.actions()
@@ -61,7 +61,7 @@ class TheFinger {
 
   }
 
-  async findElement(target) {
+  async findElement(locator) {
 
     // Get the center point of the button
     // - Note that we cannot use the driver.findElement method, since the target keeps re-rendering
@@ -70,22 +70,23 @@ class TheFinger {
       // function to retry
       async () => {
         // keep trying to get the element
-        return await this._driver.executeScript(function(target){
+        return await this._driver.executeScript(function(locator){
 
           let element, rect, pointX, pointY;
-          if (target.using === "css selector") {
-            element = document.querySelector(target.value);
+          if (locator.using === "css selector") {
+            element = document.querySelector(locator.value);
           }
 
-          if (target.using === "xpath") {
-            let result = document.evaluate(target.value, document, null, 0);
+          if (locator.using === "xpath") {
+            let result = document.evaluate(locator.value, document, null, 0);
             element = result.iterateNext();
           }
 
           if (element) {
 
-            // scroll the element into the viewport
-            element.scrollIntoView();
+            // TODO, scroll element into view
+            // MDN docs: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+
 
             // compute the center point of the element
             rect = element.getBoundingClientRect();
@@ -93,7 +94,7 @@ class TheFinger {
             pointY = Math.floor(rect.top + rect.height / 2); // position relative to the viewport (i.e. the scrolled position)
             
             return {
-              by: target,
+              by: locator,
               element: element,
               rect: rect,
               x: pointX,
@@ -102,11 +103,11 @@ class TheFinger {
           }
 
           return {
-            by: target,
+            by: locator,
             element: null,
           };
 
-        }, target)
+        }, locator)
       },
       // condition to stop retrying
       (res)=>{
