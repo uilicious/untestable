@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Running Nyan Cat | UNtestable buttons</title>
+
+    <!-- preload fonts -->
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Light.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Regular.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="/css/fonts/Poppins/Poppins-Bold.ttf" as="font" crossorigin="anonymous" />
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/site.css">
+
+    <!-- Scripts -->
+    <script src="./js/log.js"></script>
+    <script src="./js/component/cardList.js"></script>
+
+</head>
+<body>
+
+    <aside id="info">
+        <div class="level-info">
+            <div class="level-info-number">Bonus Level 1</div>
+            <div class="level-info-name">The Running Nyan Cat</div>
+            <div class="level-info-description">
+                <p>
+                    This example exhibits a "Nyan Cat" component moving across the screen with really bad JS animation.
+                </p>
+                <hr>
+                <p>
+                    <b>Exercise</b> <br>
+                    Write a test that fulfils the following requirements:
+                </p>
+                <ul>
+                    <li>
+                        Performs a click the "#nyan-cat"
+                    </li>
+                    <li>
+                        No use of Javascript clicks.
+                    </li>
+                    <li>
+                        If the click is successful, you'll see <code>""img#nyan-cat" clicked."</code> in the logs below.
+                    </li>
+                </ul>
+            </div>
+            <div class="level-page-links">
+                <a href="./index.html">Home</a>
+            </div>
+            <hr>
+        </div>
+        <div id="log">
+            <div class="log-header">
+                <div class="log-title">Logs</div>
+                <a href="#clearLogs" onclick="clearLogs()">Clear</a>
+            </div>
+        </div>
+    </aside>
+
+    <div id="app">
+        <div id="page">
+            <div id="page-content" style="position: relative;">
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<!-- Animate nyan cat -->
+<script>
+
+	var nyanCat = {
+		x: 10,
+		y: 0,
+		dir: "right"
+	}
+
+	function drawNyanCat(){
+
+		var pageContent = document.getElementById("page-content");
+	
+		var nextFrame = document.createElement("div")
+		nextFrame.setAttribute("id", "nyan-cat-frame")  
+		
+		var nyanCatImg = document.createElement("img")
+		nyanCatImg.setAttribute("id", "nyan-cat")
+		nyanCatImg.setAttribute("src", "/images/nyan-cat.gif")
+		nextFrame.appendChild(nyanCatImg)
+
+		// move nyan cat
+		if(nyanCat.dir === "right"){
+			if((nyanCat.x + 10) > pageContent.getBoundingClientRect().width){
+				nyanCat.x = 10
+				// nyanCat.dir = "left"
+				// nyanCat.x = nyanCat.x - 5
+			} else {
+				nyanCat.x = nyanCat.x + 5
+			}
+		}
+		if(nyanCat.dir === "left"){
+			if((nyanCat.x - 10) < 0){
+				nyanCat.dir = "right"
+				nyanCat.x = nyanCat.x + 5
+			} else {
+				nyanCat.x = nyanCat.x - 5
+			}
+		}
+		nextFrame.style.left = nyanCat.x + "px"
+		
+		let previousFrame = document.getElementById("nyan-cat-frame")
+		if(previousFrame){
+			pageContent.replaceChild(nextFrame, previousFrame)
+		} else {
+			pageContent.appendChild(nextFrame)
+		}
+
+		nextFrame.addEventListener("click", function(){
+			confetti && confetti()
+		})
+
+	}
+
+	setInterval(drawNyanCat, 250)
+	
+</script>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+    var myCanvas = document.createElement('canvas');
+    document.body.appendChild(myCanvas);
+
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+        });
+        myConfetti({
+        particleCount: 500,
+        spread: 300,
+        gravity: .5,
+        scalar: 5
+        // any other options from the global
+        // confetti function
+    });
+
+</script>
+
+<!-- Github banner -->
+<script src="/js/github_banner.js"></script>
+
+</html>

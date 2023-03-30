@@ -521,6 +521,17 @@ form input[type="submit"]{
     height: 35px;
 }
 
+/* nyan-cat */
+#nyan-cat-frame {   
+    position: absolute;
+    width: 40px;
+}
+
+#nyan-cat-frame img {
+    width: 100%;
+    height: auto;
+}
+
 /* Utilities */
 
 .unscrollable {
